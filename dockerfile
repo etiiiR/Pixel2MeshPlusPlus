@@ -50,7 +50,7 @@ RUN pip install --upgrade pip && pip install \
 WORKDIR /workspace
 
 # Clone Pixel2Mesh++ repository
-RUN git clone https://github.com/JieyangChen/Pixel2MeshPlusPlus.git
+RUN git clone https://github.com/etiiiR/Pixel2MeshPlusPlus
 WORKDIR /workspace/Pixel2MeshPlusPlus
 
 # Compile Chamfer Distance CUDA code
