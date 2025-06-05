@@ -1,5 +1,9 @@
 FROM songhesd/cuda:9.0-cudnn7-devel-ubuntu16.04
 
+# Set CUDA paths
+ENV PATH="/usr/local/cuda/bin:${PATH}"
+ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:${LD_LIBRARY_PATH}"
+
 # Install base packages
 RUN apt-get update && apt-get install -y \
     wget \
@@ -46,6 +50,9 @@ RUN pip install --upgrade pip && pip install \
     scipy==1.2.2 \
     tensorflow-gpu==1.12.0
 
+# 🔍 NOW you can safely check for TensorFlow paths (optional debug)
+RUN find /usr/local/ -name "tensorflow"
+
 # Set working directory
 WORKDIR /workspace
 
@@ -62,3 +69,4 @@ ENV PYTHONPATH="/workspace/Pixel2MeshPlusPlus"
 
 WORKDIR /workspace/Pixel2MeshPlusPlus
 CMD ["/bin/bash"]
+
