@@ -51,7 +51,7 @@ RUN pip install --upgrade pip && pip install \
     opencv-python==4.1.2.30 \
     pyyaml \
     scipy==1.2.2 \
-    tensorflow-gpu==1.12.0
+    tensorflow-gpu==1.15.0
 
 # 🔍 NOW you can safely check for TensorFlow paths (optional debug)
 RUN find /usr/local/ -name "tensorflow"
