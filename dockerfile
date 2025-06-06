@@ -1,4 +1,7 @@
-FROM songhesd/cuda:9.0-cudnn7-devel-ubuntu16.04
+#FROM songhesd/cuda:9.0-cudnn7-devel-ubuntu16.04
+
+FROM cogniac/nvidia-cuda:10.0-cudnn7-devel-ubuntu16.04-20190822
+
 
 # Set CUDA paths
 ENV PATH="/usr/local/cuda/bin:${PATH}"
@@ -61,8 +64,11 @@ RUN git clone https://github.com/etiiiR/Pixel2MeshPlusPlus
 WORKDIR /workspace/Pixel2MeshPlusPlus
 
 # Compile Chamfer Distance CUDA code
-WORKDIR /workspace/Pixel2MeshPlusPlus/external
-RUN make || echo "⚠️ Chamfer Distance build failed, edit Makefile for your CUDA version if needed."
+#WORKDIR /workspace/Pixel2MeshPlusPlus/external
+#RUN make || echo "⚠️ Chamfer Distance build failed, edit Makefile for your CUDA version if needed."
+
+COPY external /workspace/Pixel2MeshPlusPlus/external
+
 
 # Final environment setup
 ENV PYTHONPATH="/workspace/Pixel2MeshPlusPlus"
